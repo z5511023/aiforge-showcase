@@ -252,9 +252,9 @@ This project uses **GitHub Actions** for automatic deployment to **GitHub Pages*
 
 **首页展厅 / Homepage**
 
-<img src="public/prototypes/website-car-kimi.jpg" width="280" />
-<img src="public/prototypes/website-knowledge-mimo.jpg" width="280" />
-<img src="public/prototypes/app-sports-kimi.jpg" width="280" />
+<img src="https://raw.githubusercontent.com/z5511023/aiforge-showcase/main/public/prototypes/website-car-kimi.jpg" width="280" />
+<img src="https://raw.githubusercontent.com/z5511023/aiforge-showcase/main/public/prototypes/website-knowledge-mimo.jpg" width="280" />
+<img src="https://raw.githubusercontent.com/z5511023/aiforge-showcase/main/public/prototypes/app-sports-kimi.jpg" width="280" />
 
 **原型详情页 / Prototype Detail Pages**
 
