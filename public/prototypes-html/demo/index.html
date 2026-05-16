@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>示例HTML原型 - AIForge</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      color: #fff;
+    }
+    .top-bar {
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .top-bar .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .badge.kimi { background: #dbeafe; color: #1d4ed8; }
+    .badge.type { background: rgba(255,255,255,0.2); color: #fff; }
+    .back-btn {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .back-btn:hover { color: #fff; }
+    .hero {
+      text-align: center;
+      padding: 80px 24px;
+    }
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .hero p {
+      font-size: 18px;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+    .cta-btn {
+      display: inline-block;
+      padding: 14px 32px;
+      background: #fff;
+      color: #764ba2;
+      font-weight: 600;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+    }
+    .cta-btn:hover { transform: translateY(-2px); }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+    }
+    .feature-card {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .feature-icon {
+      font-size: 40px;
+      margin-bottom: 16px;
+    }
+    .feature-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .feature-card p {
+      font-size: 14px;
+      opacity: 0.8;
+      line-height: 1.5;
+    }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 32px; }
+      .features { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <a href="/#/" class="back-btn">&larr; 返回展厅</a>
+    <div style="display:flex;gap:8px;">
+      <span class="badge kimi">KIMI</span>
+      <span class="badge type">HTML原型</span>
+    </div>
+  </div>
+
+  <section class="hero">
+    <h1>示例HTML原型</h1>
+    <p>这是一个用户自定义上传的HTML原型文件示例。你可以将自己设计的原型导出为HTML，上传到 <code>public/prototypes-html/</code> 目录并在 <code>prototypes.json</code> 中注册。</p>
+    <a href="#" class="cta-btn">开始使用</a>
+  </section>
+
+  <section class="features">
+    <div class="feature-card">
+      <div class="feature-icon">&#128208;</div>
+      <h3>简单配置</h3>
+      <p>只需修改 prototypes.json 文件即可添加新的原型展示</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">&#127919;</div>
+      <h3>自动展示</h3>
+      <p>首页会自动读取配置并渲染卡片，支持筛选和搜索</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">&#128293;</div>
+      <h3>完全自定义</h3>
+      <p>HTML原型可以是任何内容，完全由你控制样式和交互</p>
+    </div>
+  </section>
+</body>
+</html>

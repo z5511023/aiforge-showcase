@@ -1,0 +1,81 @@
+{
+  "prototypes": [
+    {
+      "id": "website-car-kimi",
+      "model": "KIMI",
+      "type": "官网",
+      "title": "驰骋汽车官网",
+      "description": "白蓝渐变风格，大图展示汽车，现代化企业官网设计。KIMI原生设计能力输出，干净利落的品牌表达。",
+      "tags": ["白蓝渐变", "汽车展示", "企业官网"],
+      "thumbnail": "/prototypes/website-car-kimi.jpg",
+      "source": "detail",
+      "detailPath": "/prototype/website-car-kimi"
+    },
+    {
+      "id": "website-knowledge-mimo",
+      "model": "Mimo",
+      "type": "官网",
+      "title": "知识科普网站",
+      "description": "暗黑金色风格，知识类内容聚合平台。Mimo生成，强调高端质感与沉浸式阅读体验。",
+      "tags": ["暗黑主题", "金色强调", "知识平台"],
+      "thumbnail": "/prototypes/website-knowledge-mimo.jpg",
+      "source": "detail",
+      "detailPath": "/prototype/website-knowledge-mimo"
+    },
+    {
+      "id": "app-sports-kimi",
+      "model": "KIMI",
+      "type": "APP",
+      "title": "运动健身APP",
+      "description": "白色背景蓝色强调，数据可视化展示风格。KIMI输出，清爽运动风，专注数据追踪。",
+      "tags": ["白色清爽", "蓝色强调", "运动数据"],
+      "thumbnail": "/prototypes/app-sports-kimi.jpg",
+      "source": "detail",
+      "detailPath": "/prototype/app-sports-kimi"
+    },
+    {
+      "id": "app-diet-chatgpt",
+      "model": "ChatGPT",
+      "type": "APP",
+      "title": "饮食健康APP",
+      "description": "深绿+黑色调，健康饮食记录与管理。ChatGPT生成，暗色健康风，自然有机的视觉语言。",
+      "tags": ["深色主题", "绿色强调", "饮食记录"],
+      "thumbnail": "/prototypes/app-diet-chatgpt.jpg",
+      "source": "detail",
+      "detailPath": "/prototype/app-diet-chatgpt"
+    },
+    {
+      "id": "admin-ecommerce-kimi",
+      "model": "KIMI",
+      "type": "后台",
+      "title": "电商运营后台",
+      "description": "白底深色sidebar，数据驱动型管理后台。KIMI原生输出，专业简洁的运营指挥中心。",
+      "tags": ["白底深色侧栏", "数据看板", "电商运营"],
+      "thumbnail": "/prototypes/admin-ecommerce-kimi.jpg",
+      "source": "detail",
+      "detailPath": "/prototype/admin-ecommerce-kimi"
+    },
+    {
+      "id": "admin-engineering-gemini",
+      "model": "Gemini",
+      "type": "后台",
+      "title": "智慧工地后台",
+      "description": "浅灰底蓝色强调，工程进度与设备监控后台。Gemini生成，工业科技感十足。",
+      "tags": ["浅灰底蓝", "工程监控", "工业风"],
+      "thumbnail": "/prototypes/admin-engineering-gemini.jpg",
+      "source": "detail",
+      "detailPath": "/prototype/admin-engineering-gemini"
+    },
+    {
+      "id": "demo-html-prototype",
+      "model": "KIMI",
+      "type": "官网",
+      "title": "示例HTML原型",
+      "description": "用户自定义上传的HTML原型示例。你可以上传自己的HTML原型文件并在这里展示。",
+      "tags": ["用户上传", "HTML原型", "自定义"],
+      "thumbnail": "/prototypes/website-car-kimi.jpg",
+      "source": "html",
+      "htmlPath": "/prototypes-html/demo/index.html"
+    }
+  ]
+}

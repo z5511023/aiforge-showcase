@@ -73,3 +73,35 @@
     @apply bg-background text-foreground;
   }
 }
+
+.model-badge-kimi {
+  @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200;
+}
+
+.model-badge-mimo {
+  @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-violet-50 text-violet-700 border border-violet-200;
+}
+
+.model-badge-chatgpt {
+  @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200;
+}
+
+.model-badge-gemini {
+  @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-orange-50 text-orange-700 border border-orange-200;
+}
+
+.filter-btn {
+  @apply px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 border;
+}
+
+.filter-btn-active {
+  @apply bg-gray-900 text-white border-gray-900;
+}
+
+.filter-btn-inactive {
+  @apply bg-white text-gray-600 border-gray-200 hover:border-gray-400 hover:text-gray-900;
+}
+
+.proto-card {
+  @apply bg-white rounded-xl border border-gray-200 overflow-hidden transition-all duration-200 hover:shadow-lg hover:border-gray-300;
+}
