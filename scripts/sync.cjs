@@ -45,6 +45,12 @@ function loadEnv() {
   return env
 }
 
+// 延迟函数（兼容 Windows/Mac/Linux）
+function sleepMs(ms) {
+  const start = Date.now()
+  while (Date.now() - start < ms) {}
+}
+
 // 执行命令，带重试
 function run(cmd, retries = 3) {
   for (let i = 0; i < retries; i++) {
@@ -52,8 +58,8 @@ function run(cmd, retries = 3) {
       return execSync(cmd, { stdio: 'pipe', encoding: 'utf8', cwd: path.resolve(__dirname, '..') })
     } catch (err) {
       if (i === retries - 1) throw err
-      log(C.yellow, `  失败，${3 - i}秒后重试...`)
-      execSync('sleep 3', { stdio: 'ignore' })
+      log(C.yellow, `  失败，3秒后重试...`)
+      sleepMs(3000)
     }
   }
 }
@@ -125,36 +131,61 @@ async function main() {
   // 5. git push
   log(C.blue, '[5/5] 推送到 GitHub（最多重试3次）...')
 
-  // 设置带 token 的远程地址
   const remoteUrl = `https://${token}@github.com/${repo}.git`
-  try {
-    execSync('git remote get-url origin', { stdio: 'ignore', cwd: path.resolve(__dirname, '..') })
-  } catch {
-    // 如果没有 remote，添加
-    log(C.gray, '  设置远程仓库地址...')
-    run(`git remote add origin ${remoteUrl}`)
-  }
-
-  // 临时切换到带 token 的 URL
-  log(C.gray, '  使用 Token 认证推送...')
-  try {
-    run(`git push ${remoteUrl} main:main`)
-    log(C.green, '  ✓ 推送成功！')
-  } catch (err) {
-    // 尝试 force push
-    log(C.yellow, '  常规推送失败，尝试 force push...')
+  const originalUrl = (() => {
     try {
-      run(`git push ${remoteUrl} main:main --force`)
-      log(C.green, '  ✓ Force push 成功！')
+      return execSync('git remote get-url origin', { encoding: 'utf8', cwd: path.resolve(__dirname, '..') }).trim()
+    } catch {
+      return null
+    }
+  })()
+
+  // 设置带 token 的 remote URL
+  try {
+    execSync(`git remote set-url origin ${remoteUrl}`, { cwd: path.resolve(__dirname, '..') })
+    log(C.gray, '  已配置 Token 认证')
+  } catch (err) {
+    // 如果没有 remote，添加
+    log(C.gray, '  添加远程仓库...')
+    try {
+      execSync(`git remote add origin ${remoteUrl}`, { cwd: path.resolve(__dirname, '..') })
     } catch (err2) {
-      log(C.red, '  ✗ 推送失败，可能原因：')
-      log(C.red, `    ${err2.stderr || err2.message}`)
-      log(C.yellow, '\n  建议：')
-      log(C.gray, '  1. 检查网络连接（GitHub 访问可能需要代理）')
-      log(C.gray, '  2. 检查 Token 是否有 repo 权限')
-      log(C.gray, '  3. 手动运行: git push origin main')
+      log(C.red, `  ✗ 配置远程仓库失败: ${err2.stderr || err2.message}`)
       process.exit(1)
     }
+  }
+
+  // 推送
+  let pushed = false
+  try {
+    execSync('git push origin main', { stdio: 'pipe', encoding: 'utf8', cwd: path.resolve(__dirname, '..') })
+    log(C.green, '  ✓ 推送成功！')
+    pushed = true
+  } catch (err) {
+    log(C.yellow, '  常规推送失败，尝试 force push...')
+    try {
+      execSync('git push origin main --force', { stdio: 'pipe', encoding: 'utf8', cwd: path.resolve(__dirname, '..') })
+      log(C.green, '  ✓ Force push 成功！')
+      pushed = true
+    } catch (err2) {
+      log(C.red, '  ✗ 推送失败')
+      log(C.red, `    ${err2.stderr || err2.message}`)
+    }
+  }
+
+  // 恢复原来的 remote URL（如果有）
+  if (originalUrl && originalUrl !== remoteUrl) {
+    try {
+      execSync(`git remote set-url origin ${originalUrl}`, { cwd: path.resolve(__dirname, '..') })
+    } catch { /* ignore */ }
+  }
+
+  if (!pushed) {
+    log(C.yellow, '\n  建议：')
+    log(C.gray, '  1. 检查网络连接（GitHub 访问可能需要代理）')
+    log(C.gray, '  2. 检查 Token 是否有 repo 权限')
+    log(C.gray, '  3. 手动运行: git push origin main')
+    process.exit(1)
   }
 
   // 完成
